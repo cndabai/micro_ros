@@ -68,6 +68,7 @@ static rt_device_t micro_ros_serial;
 
 // #define micro_rollover_useconds 4294967295
 
+#ifndef RT_USING_POSIX
 int clock_gettime(clockid_t unused, struct timespec *tp)
 {
     (void)unused;
@@ -78,6 +79,7 @@ int clock_gettime(clockid_t unused, struct timespec *tp)
 
     return 0;
 }
+#endif
 
 static rt_err_t uart_input(rt_device_t dev, rt_size_t size)
 {
